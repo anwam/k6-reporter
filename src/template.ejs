@@ -212,7 +212,10 @@
                   <td>-</td>
                 <% } %>
 
-                <% if(metric.values.rate) { %>
+                <% if(metric.values.rate) {
+                  if(metricName === 'http_req_failed') { %>
+                  <td class="<%= checkFailed(metric, 'rate') %>"><%= (metric.values.rate * 100).toFixed(2) %> %</td>
+                  <% } else { %>
                   <td class="<%= checkFailed(metric, 'rate') %>"><%= metric.values.rate.toFixed(2) %></td>
                 <% } else { %>
                   <td>-</td>
