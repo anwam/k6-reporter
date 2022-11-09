@@ -5,7 +5,6 @@
 
 // Have to import ejs this way, nothing else works
 import ejs from '../node_modules/ejs/ejs.min.js'
-import template from './template.ejs'
 
 const version = '2.3.0'
 
@@ -97,7 +96,7 @@ export function htmlReport(data, opts = {}) {
   ]
 
   // Render the template
-  const html = ejs.render(template, {
+  const html = ejs.renderFile('./template.ejs', {
     data,
     title: opts.title,
     standardMetrics,
