@@ -217,7 +217,8 @@
                   <td class="<%= checkFailed(metric, 'rate') %>"><%= (metric.values.rate * 100).toFixed(2) %> %</td>
                   <% } else { %>
                   <td class="<%= checkFailed(metric, 'rate') %>"><%= metric.values.rate.toFixed(2) %></td>
-                <% } else { %>
+                <% }
+                  } else { %>
                   <td>-</td>
                 <% } %>
                 
