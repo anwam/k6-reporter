@@ -201,7 +201,7 @@
 
               for(metricName of standardMetrics) { 
                 if(!data.metrics[metricName]) { continue }
-                let metric = data.metrics[metricName] 
+                var metric = data.metrics[metricName] 
             %>
               <tr>
                 <td><b><%= metricName %></b></td>
