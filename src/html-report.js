@@ -64,31 +64,35 @@ export function htmlReport(data, opts = {}) {
   }
 
   const standardMetrics = [
-    'grpc_req_duration',
+    'http_reqs',
+    'http_req_failed',
     'http_req_duration',
+    'grpc_req_duration',
     'http_req_waiting',
-    'http_req_connecting',
-    'http_req_tls_handshaking',
+    // 'http_req_connecting',
+    // 'http_req_tls_handshaking',
     'http_req_sending',
     'http_req_receiving',
     'http_req_blocked',
     'iteration_duration',
     'group_duration',
-    'ws_connecting',
-    'ws_msgs_received',
-    'ws_msgs_sent',
-    'ws_sessions',
+    // 'ws_connecting',
+    // 'ws_msgs_received',
+    // 'ws_msgs_sent',
+    // 'ws_sessions',
   ]
 
   const otherMetrics = [
     'iterations',
     'data_sent',
     'checks',
-    'http_reqs',
+    // 'http_reqs',
+    // 'http_req_failed',
+    'http_req_connecting',
+    'http_req_tls_handshaking',
     'data_received',
     'vus_max',
     'vus',
-    'http_req_failed',
     'http_req_duration{expected_response:true}',
   ]
 

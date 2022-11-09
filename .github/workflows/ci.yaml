@@ -2,13 +2,13 @@ name: CI Checks & Build
 
 on:
   push:
-    branches: ["main"]
+    branches: ['main']
   pull_request:
 
 jobs:
   build:
     runs-on: ubuntu-latest
-    name: "CI Build"
+    name: 'CI Build'
     steps:
       - name: Checkout
         uses: actions/checkout@v2
@@ -25,7 +25,7 @@ jobs:
       - name: Add dist bundle
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         run: |
-          git config --local user.email "benc.uk@gmail.com"
+          git config --local user.email "dev.anuwong@gmail.com"
           git config --local user.name "GitHub Actions"
           git add --force dist
           git commit -m "CI automation $(date)"
