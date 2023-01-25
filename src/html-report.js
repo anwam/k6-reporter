@@ -6,8 +6,9 @@
 // Have to import ejs this way, nothing else works
 import ejs from '../node_modules/ejs/ejs.min.js'
 import template from './template.ejs'
+import ms from 'ms'
 
-const version = '2.3.0'
+const version = '2.3.1'
 
 //
 // Main function should be imported and wrapped with the function handleSummary
@@ -15,7 +16,7 @@ const version = '2.3.0'
 export function htmlReport(data, opts = {}) {
   // Default options
   if (!opts.title) {
-    opts.title = new Date().toISOString().slice(0, 16).replace('T', ' ')
+    opts.title = new Date().toISOString()
   }
   // eslint-disable-next-line
   if (!opts.hasOwnProperty('debug')) {
@@ -63,8 +64,10 @@ export function htmlReport(data, opts = {}) {
     }
   }
 
+  const totalDuration = ms(data.state.testRunDurationMs, { long: true })
+
   const standardMetrics = [
-    'http_reqs',
+    // 'http_reqs',
     'http_req_failed',
     'http_req_duration',
     'grpc_req_duration',
@@ -80,9 +83,12 @@ export function htmlReport(data, opts = {}) {
     // 'ws_msgs_received',
     // 'ws_msgs_sent',
     // 'ws_sessions',
+    'testRunDurationMs',
   ]
 
   const otherMetrics = [
+    'http_reqs',
+    'http_req_failed',
     'iterations',
     'data_sent',
     'checks',
@@ -106,6 +112,7 @@ export function htmlReport(data, opts = {}) {
     thresholdCount,
     checkFailures,
     checkPasses,
+    totalDuration,
     version,
   })
 
